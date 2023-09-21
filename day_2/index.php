@@ -52,7 +52,7 @@
         echo "Le mangasin est fermer";
    }
 */
-/**exo combine en entiers */
+/**exo combine en entiers 
 $a = 2;
 $b = 5;
 
@@ -63,7 +63,7 @@ echo "<br>";
 echo $b <=> $b ;
 echo "<br>";
 
-/**exo combine en tableau <=> */
+exo combine en tableau <=> 
 $a = [1, 3, 5];
 $b = [2, 4, 5];
 echo $a <=> $b;
@@ -71,6 +71,38 @@ echo "<br>";
 echo $b <=> $a;
 echo "<br>";
 echo $a <=> $a;
+*/
+
+/**exercice tableau 1 */
+$persone = [
+    "nom" => "Rakoto",
+    "age" => "13",
+    "sex" => "Masculin",
+
+];
+echo "Nom: " .$persone ["nom"];
+echo "<br>";
+echo "Age :" .$persone ["age"];
+echo "<br>";
+echo "<hr>";
+/**exercice tableau 2 */
+
+$eleve = array ("Rakoto", "Rabe", "Rasoa", "Naivo");
+
+$eleve1 = array_slice ($eleve, 0, 2);
+$eleve2 = array_slice ($eleve, 2);
+array_push ($eleve1, "Rasoherina"); //ajout 
+array_splice($eleve1, 1); // suprimer
+$eleve = array_merge ($eleve1, $eleve2);
+$eleve3 = array("Solo");
+$eleve4 = array_replace($eleve, $eleve3);
+
+
+echo '<pre>';
+var_dump($eleve4);
+echo '</pre>';
+
+
 
     
 

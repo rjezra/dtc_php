@@ -73,7 +73,7 @@ echo "<br>";
 echo $a <=> $a;
 */
 
-/**exercice tableau 1 */
+/**exercice tableau 1 
 $persone = [
     "nom" => "Rakoto",
     "age" => "13",
@@ -85,7 +85,7 @@ echo "<br>";
 echo "Age :" .$persone ["age"];
 echo "<br>";
 echo "<hr>";
-/**exercice tableau 2 */
+exercice tableau 2
 
 $eleve = array ("Rakoto", "Rabe", "Rasoa", "Naivo");
 
@@ -101,9 +101,55 @@ $eleve4 = array_replace($eleve, $eleve3);
 echo '<pre>';
 var_dump($eleve4);
 echo '</pre>';
+*/
+/** 
+$prouit = ["telephone", "voiture", "ppn"];
+echo $prouit[0].PHP_EOL;
+echo $prouit[1].PHP_EOL;
+*/
+/** 
+$biby = [
+    "herbivore" => [
+        "boeuf" => ["omby gasy", "omby vazaha"],
+    ],
+    "omnivore" => ["kisoa"],
+];
+
+echo $biby ["herbivore"]["boeuf"][1];
+*/
+
+/**exo boucle */
+/** 
+    $numbre = [1,12,2,23,55,4578,123,457,];
+    for($x = 0; $x<count($numbre); $x++){
+    echo $numbre[$x];
+}
+*/
+/** 
+
+$numbre = [1,12,2,23,55,4578,123,457];
+
+for($x=count($numbre)-1; $x>=0; $x--){
+    echo $numbre[$x];
+}
+$numbre = [1,12,2,23,55,4578,123,457,];
+for($x = 0; $x<count($numbre); $x++){
+    if(($numbre[$x] % 2) != 0){
+        echo $numbre[$x].PHP_EOL;
+    }
+
+}
+*/
+
+$nombres = [
+    "paire" => 2,
+    "impaire" =>3
+];
+foreach($nombres as $nombre){
+    echo $nombre. PHP_EOL;
+}
 
 
 
-    
 
     

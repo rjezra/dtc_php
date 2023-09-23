@@ -12,14 +12,9 @@
 </form>
 <h1>Informations</h1>
 <?php
-if(isset($nom)){
+if(isset($nom) && isset($prenom) && isset($adresse)){
     echo "<p>Nom :" .$nom. "</p>";
-}
-if(isset($prenom)){
     echo "<p>Prenom :" .$prenom. "</p>";
-}
-
-if(isset($adresse)){
     echo "<p>Adresse :" .$adresse. "</p>";
 }
  ?>

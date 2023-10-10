@@ -4,20 +4,14 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"])){
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     strtoupper($nom);
-    function getFullName(string $nom, ?string $prenom = "Ravelo"): string
+    function getFullName(string $nom, ?string $prenom): string
     {  
-        if(!empty($nom)){
-            preg_match("/([^A-Za-zéèàïäüùç\s])/", $nom, $result);
-            if(!empty($result)){
-                return "votre nom est icorrect";
-            }elseif(!$prenom){
-                    return strtoupper($nom);
-                }
-                return  "Votre nom complet est: $nom  $prenom";
-            }else{
-                return "Votre nom est vide";
-            }
-    } 
+        if(!empty($nom) && !preg_match("/^[A-Za-zÀ-ÿ][\s\t]$/", $nom) && ctype_alpha($nom)){
+            return  "Votre nom complet est: $nom  $prenom";
+        }else{
+            return "Votre Nom invalide";  
+        }
+    }
     echo getFullName($_POST["nom"], $_POST["prenom"]);
 }
 ?>

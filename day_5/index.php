@@ -6,10 +6,10 @@ if(isset($_POST["nom"]) && isset($_POST["prenom"])){
     strtoupper($nom);
     function getFullName(string $nom, ?string $prenom): string
     {  
-        if(!empty($nom) && !preg_match("/^[A-Za-zÀ-ÿ][\s\t]+$/", $nom)){
+        if (!empty($nom) && preg_match("/^[A-Za-zÀ-ÿ]+$/", str_replace(' ', '', $nom))){
             return  "Votre nom complet est: $nom  $prenom";
         }else{
-            return "Votre Nom invalide";  
+            return "Votre Nom invalide";
         }
     }
     echo getFullName($_POST["nom"], $_POST["prenom"]);

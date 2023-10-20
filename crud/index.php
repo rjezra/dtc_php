@@ -31,6 +31,7 @@ if (isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["age"]) && i
     if (isNameValid($nom) && isNameValid($prenom) && isAgeValid($ages) && isPhoneValid($phones)) {
         $sql = sprintf('INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES("%s", "%s", %d, "%s", "%s")', $nom, $prenom, $ages, $phones, $adresse);
         mysqli_query($connexion, $sql);
+        header('Location: listing.php');
         echo "Enresistre ok";
     } else {
         echo "Vérifiez votre nom, prénom, age, telephone";

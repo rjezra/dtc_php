@@ -1,25 +1,28 @@
 <?php
 $connexion = mysqli_connect("localhost", "root", "", "dtc");
+
 if (!$connexion) {
-    die("Impossible de se connecter");
+    die("Impossible de se connecter à la base de données");
 }
 
-if (isset($_POST['suprime'])) {
-    $nom = mysqli_real_escape_string($connexion, $_POST['nom']); // Sanitize user input
+if (isset($_POST["supprime"])) {
+    $nom = mysqli_real_escape_string($connexion, $_POST['nom']);
     $sql2 = "DELETE FROM php WHERE nom = '$nom'";
-    if (mysqli_query($connexion, $sql2)) {
-        echo "Supprimer ok";
-    } else {
-        echo "Erreur lors de la suppression de l'enregistrement : " . mysqli_error($connexion);
-    }
+    mysqli_query($connexion, $sql2);
+}
+
+if (isset($_POST["modifier"])) {
+    $id = $_POST["id"]; // Assurez-vous que $id est correctement défini
+    header('Location: update.php?id=' . $id);
+    exit();
 }
 
 $sql = "SELECT * FROM php";
 $result = mysqli_query($connexion, $sql);
 ?>
 
-<h1>Liste de utilisateur:</h1>
-<table border="1" bordercolor="blue" width="40%">
+<h1>Liste des utilisateurs :</h1>
+<table border="1" bordercolor="blue" width="50%">
     <tr>
         <th>Nom</th>
         <th>Prenom</th>
@@ -38,7 +41,9 @@ $result = mysqli_query($connexion, $sql);
             <td>
                 <form method="post" action="">
                     <input type="hidden" name="nom" value="<?php echo $ligne['nom']; ?>">
-                    <button type="submit" name="suprime">supprimer</button>
+                    <input type="hidden" name="id" value="<?php echo $ligne['id']; ?>">
+                    <button type="submit" name="supprime">Supprimer</button>
+                    <button type="submit" name="modifier">Modifier</button>
                 </form>
             </td>
         </tr>

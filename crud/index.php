@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+$connexion = mysqli_connect("localhost", "root", "", "dtc");
+if (!$connexion) {
+    die("Impossible de se connecter");
+}
 
 function isNameValid(string $name): bool
 {
@@ -15,20 +19,21 @@ function isAgeValid($age): bool
 function isPhoneValid(string $phone):bool
 {
     $regex = "/^\+\d{3}\s\d{2}\s\d{3}\s\d{2}$/";
-    return preg_match($regex, $phone);
+    return preg_match($regex, $phone) == 1;
 }
 
-if (isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["age"]) && isset($_POST["phone"])) {
+if (isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["age"]) && isset($_POST["phone"]) && isset($_POST["adresse"])) {
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $ages = $_POST["age"];
     $phones = $_POST["phone"];
-
-
+    $adresse = $_POST["adresse"];
     if (isNameValid($nom) && isNameValid($prenom) && isAgeValid($ages) && isPhoneValid($phones)) {
-        echo "Validation ok";
+        $sql = sprintf('INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES("%s", "%s", %d, "%s", "%s")', $nom, $prenom, $ages, $phones, $adresse);
+        mysqli_query($connexion, $sql);
+        echo "Enresistre ok";
     } else {
-        echo "Vérifiez votre nom et prénom";
+        echo "Vérifiez votre nom, prénom, age, telephone";
     }
 }
 ?>

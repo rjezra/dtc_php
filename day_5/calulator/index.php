@@ -32,9 +32,9 @@ if(isset($_POST["nombre1"]) && isset($_POST["nombre2"]) && isset($_POST["operate
 }
 ?>
 <form action="./index.php" method="POST">
-    <input type="text" name="nombre1">
+    <input type="text" name="nombre1" placeholder="Entre votre nombre 1">
     <input type="text" name="operateur"  placeholder="Entre votre operateur +-*/">
-    <input type="text" name="nombre2">
-    <button type="submit" name="enregistre">enregistre</button>
+    <input type="text" name="nombre2" placeholder="Entre votre nombre 2">
+    <button type="submit" name="enregistre">Valider</button>
 </form>
 

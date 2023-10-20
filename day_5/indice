@@ -1,0 +1,8 @@
+connexion db
+$connexion = mysqli_connect("localhost", "root", "", "dtc");
+if (!$connexion) {
+    die("Impossible de se connecter");
+}
+injection mysql 
+//$sql ="INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES ('".$nom."','".$prenom."','".$age."','".$telephone."','".$adresse."')";
+$sql = sprintf('INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES("%s", "%s", %d, "%s", "%s")', $nom, $prenom, $age, $telephone, $adresse);
